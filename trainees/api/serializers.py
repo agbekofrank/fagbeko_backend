@@ -1,8 +1,16 @@
-from utils.models import Education
 from rest_framework import serializers
-from trainees.models import Trainee
-from utils.api.serializers import EducationSerializer
-from skills.api.serializers import SkillSerializer
+
+from trainees.models import *
+
+class SkillSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Skill
+        fields = '__all__'
+
+class CertificationSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Certification
+        fields = '__all__'
 
 class TraineeSerializer(serializers.ModelSerializer):
     # child = RelatedFieldAlternative(queryset=Child.objects.all(), serializer=ChildSerializer)
@@ -42,3 +50,24 @@ class TraineeDetailSerializer(serializers.ModelSerializer):
     #     except:
     #         image = None
     #     return image
+
+class ExperienceSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Experience
+        fields = '__all__'
+
+class EducationSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Education
+        fields = '__all__'
+
+class FieldsSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Fields
+        fields = '__all__'
+
+
+class EstablishmentSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Establishment
+        fields = '__all__'
