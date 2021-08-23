@@ -20,7 +20,7 @@ class Trainee (models.Model):
     gender = models.CharField(max_length=1, choices=GENDER)
     certifications = models.ManyToManyField(Certification)
     education = models.ForeignKey(Education, on_delete=models.CASCADE, blank=True, null=True)
-    skills = models.ManyToManyField(Skill,blank=True)
+    skills = models.ManyToManyField(Skill)
     timestamp = models.DateTimeField(auto_now=False, auto_now_add=True)
     updated = models.DateTimeField(auto_now=True, auto_now_add=False)
 
