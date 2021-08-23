@@ -27,6 +27,10 @@ INSTALLED_APPS = [
     'corsheaders',
     'rest_framework',
     'rest_framework.authtoken',
+
+    'utils',
+    'certifications',
+    'skills',
     'trainees',
     'accounts'
 ]
@@ -44,14 +48,6 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'backend.urls'
-
-REST_FRAMEWORK = {
-    # Use Django's standard `django.contrib.auth` permissions,
-    # or allow read-only access for unauthenticated users.
-    'DEFAULT_PERMISSION_CLASSES': [
-        # 'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
-    ]
-}
 
 TEMPLATES = [
     {
@@ -145,12 +141,13 @@ REST_FRAMEWORK = {
         'rest_framework.permissions.AllowAny',
     ],
 }
+CORS_ALLOW_CREDENTIALS = True
 JWT_AUTH = {
     'JWT_EXPIRATION_DELTA': timedelta(days=30),
     'JWT_REFRESH_EXPIRATION_DELTA': timedelta(days=30),
     'JWT_ALLOW_REFRESH': True,
     # 'JWT_ALGORITHM': 'RS256',
-    'JWT_AUTH_HEADER_PREFIX': 'JWT',
+    'JWT_AUTH_HEADER_PREFIX': 'JWT', 
 }
 CORS_ORIGIN_WHITELIST = [
     'http://localhost:4200'
@@ -159,7 +156,7 @@ ACCESS_CONTROL_ALLOW_ORIGIN = [
     'http://localhost:4200'
 ]
 
-
+APPEND_SLASH=False 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 

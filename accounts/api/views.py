@@ -19,6 +19,7 @@ class UserRegAPI(generics.CreateAPIView):
     queryset = User.objects.all()
     serializer_class = RegisterSerializer
     permission_classes = [permissions.AllowAny]
+    
     # parser_classes = [parsers.MultiPartParser, parsers.FormParser]
 
 

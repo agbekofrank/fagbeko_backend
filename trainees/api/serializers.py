@@ -1,26 +1,37 @@
+from utils.models import Education
 from rest_framework import serializers
 from trainees.models import Trainee
+from utils.api.serializers import EducationSerializer
+from skills.api.serializers import SkillSerializer
 
 class TraineeSerializer(serializers.ModelSerializer):
+    # child = RelatedFieldAlternative(queryset=Child.objects.all(), serializer=ChildSerializer)
+    # education = EducationSerializer(many=True)
+    skills = SkillSerializer(many=True)
     class Meta:
         model = Trainee
         fields = '__all__'
+        depth = 2
 
+class TraineeCreateSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Trainee
+        fields = '__all__'
+        depth = 2
 
 class TraineeEditSerializer(serializers.ModelSerializer):
-    # image = ImageField(max_length=None, use_url=True, required=False)
     class Meta:
         model = Trainee
         fields = '__all__'
+        depth = 2
     
 
 class TraineeDetailSerializer(serializers.ModelSerializer):
-    # user = SerializerMethodField()
-    # user = UserSerializer(read_only=True)
-    # image = SerializerMethodField()
+    skills = SkillSerializer(many=True)
     class Meta:
         model = Trainee
         fields = '__all__'
+        depth = 2
     
     # def get_user(self, obj):
     #     return str(obj.user.username)
